@@ -1,4 +1,5 @@
 export class RegistrationData {
+    patientId?: number;
     firstName?: string;
     lastName?: string;
     dataOfBirth?: string;
