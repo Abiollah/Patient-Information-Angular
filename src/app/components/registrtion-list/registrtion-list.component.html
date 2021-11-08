@@ -1,0 +1,63 @@
+<div class="list row">
+    <div class="col-md-8">
+      <div class="input-group mb-3">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Search by Date of Birth"
+          [(ngModel)]="dataOfBirth"
+        />
+        <div class="input-group-append">
+          <button
+            class="btn btn-outline-secondary"
+            type="button"
+            (click)="searchDOB()"
+          >
+            Search
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <h4>Registration List</h4>
+      <ul class="list-group">
+        <li
+          class="list-group-item"
+          *ngFor="let registration of registrations; let i = index"
+          [class.active]="i == currentIndex"
+          (click)="setActiveRegistration(registration, i)"
+        >
+          {{ registration.dataOfBirth }}
+        </li>
+      </ul>
+  
+      <button class="m-3 btn btn-sm btn-danger" (click)="removeAllRegistrations()">
+        Remove All Registrations
+      </button>
+    </div>
+    <div class="col-md-6">
+      <div *ngIf="currentRegistration">
+        <h4>Registration</h4>
+        <div>
+          <label><strong>First Name:</strong></label> {{ currentRegistration.firstName }}
+        </div>
+        <div>
+          <label><strong>First Name:</strong></label>
+          {{ currentRegistration.lastName }}
+        </div>
+        <div>
+            <label><strong>Phone Number:</strong></label>
+            {{ currentRegistration.phoneNumber }}
+          </div>
+        <a class="badge badge-warning" routerLink="/registration/{{ currentRegistration.firstName }}">
+          Edit
+        </a>
+      </div>
+  
+      <div *ngIf="!currentRegistration">
+        <br />
+        <p>Please click on a Registration...</p>
+      </div>
+    </div>
+  </div>
+  
